@@ -1,7 +1,120 @@
+<!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
-Hello World! C you did it again.
-</body>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <table align="center" border="1" width="50%">
+  <tr>
+    <td align="center">
+          <h1 class="venueTitle">Monk's Cafe</h1>
+        <span class="venueTagLine">"The Coffee Shop"</span>
+        <br>
+        <br>
+    </td>
+  </tr>
+   <tr>
+    <td align="center">
+      <img src="images/toms-restaurant.jpg" width="100%" alt="Billboard">
+    </td>
+   </tr>
+   <tr>
+    <td align="center">
+        <h1 class="sectionTitle">Reservations</h1>
+    </td>
+   </tr>
+   <tr>
+    <td>
+<table align="center" border="0" width="95%">
+  <thead>
+    <th class="functionName" width="40%"><br>Make a Reservation<br><br></th>
+    <th width="20%">&nbsp;</th>
+    <th class="functionName" width="40%"><br>Existing Reservations<br><br></th>
+  </thead>
+    <tr>
+      <td class="styleFrmReserve">
+        <form id="frmReserve" name="frmReserve">
+          <span class="inputLabel">Name:</span>&nbsp;<input type="text"><br><br>
+           <span class="inputLabel">Day:&nbsp;</span><input type="text"><br>
+          <br>
+          <input type="submit">
+        </form>
+        <br>
+        <br>
+      </td>
+      <td></td>
+      <td id="frmReserveData" name="frmReserveData" class="styleReserveData" valign="top" align="center">
+        <span class="reservationName">customer name</span> - <span class="reservationDay">reservation day</span><br>
+        <span class="reservationName">customer name</span> - <span class="reservationDay">reservation day</span><br>
+        <span class="reservationName">customer name</span> - <span class="reservationDay">reservation day</span><br>
+        <br>
+        <br>
+      </td>
+    </tr>
+  
+  </table>
+    </td>
+   </tr>
+   <tr>
+    <td align="center">
+        <h1 class="sectionTitle">Come dine with us!</h1>
+    </td>
+   </tr>
+       <tr>
+    <td align="center">
+      <img src="images/jerry.jpg" width="100%" alt="Billboard #2">
+    </td>
+   </tr>   <tr>
+    <td align="center">
+        <h1 class="sectionTitle">Customer Reviews</h1>
+    </td>
+   </tr>
+   <tr>
+    <td align="center">
+      <table border="0" width="95%">
+        <thead>
+          <th class="functionName" width="45%">Google Map</th>
+          <th width="10%">&nbsp;</th>
+          <th class="functionName" width="45%">Customer Reviews</th>
+        </thead>
+        <tr>
+          <td id="map" align="center">
+            Map       
+
+          </td>
+          <td>&nbsp;</td>
+          <td valign="top" align="center">
+            <br>
+            <br>
+            <span class="customerComment">“Big lettuce, big carrots, tomatoes like volleyballs.”<br>
+            </span><br>
+            <span class="customerName">- Jerry Seinfeld, on The BIG Salad</span>
+            <hr>
+            <span class="customerComment">Review</span><br><br>
+            <span class="customerName">Customer Name</span>
+            <hr>
+             <span class="customerComment">Review</span><br><br>
+            <span class="customerName">Customer Name</span>
+            <hr>
+          </td>
+      </table>
+    </td>
+   </tr>
+</table>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.8054491, lng: -73.9654415},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1IECGVuRj5G2-_qWR-uNaVRxKq1-5w_A&callback=initMap"
+    async defer></script>
+  </body>
 </html>

@@ -1,0 +1,96 @@
+
+/*
+
+style.css
+GA Unit 9 Project
+Author: Chad D.Mills
+
+*/
+
+
+ #map {
+        height: 300px;
+      }
+
+
+/* CLASS: Venue Title */
+.venueTitle
+
+{
+ color: Black;
+ font-family: Roboto;
+}
+
+/* CLASS: Venue Tag Line */
+.venueTagLine
+
+{
+ color: Gray;
+ font-family: Roboto;
+}
+
+
+/* CLASS: Section Title */
+.sectionTitle
+
+{
+ color: Black;
+ font-family: Roboto;
+}
+
+/* CLASS: Fuction Name */
+.functionName
+
+{
+ color: Purple;
+ font-family: Roboto;
+ font-size: 18px;
+}
+
+/* CLASS: Customer Comments*/
+.customerComment
+
+{
+ color: Black;
+ font-family: Roboto;
+ font-weight: Bold;
+ font-size: 15px;
+}
+
+/* CLASS: Customer Comments*/
+.customerName
+
+{
+ color: Gray;
+ font-family: Roboto;
+  font-size: 12px;
+}
+
+/* CLASS: Customer Reservation Name*/
+.reservationName
+
+{
+ color: Black;
+ font-family: Roboto;
+ font-weight: Bold;
+  font-size: 12px;
+}
+
+/* CLASS: Customer Reservation Day*/
+.reservationDay
+
+{
+ color: Gray;
+ font-family: Roboto;
+  font-size: 12px;
+}
+
+/* CLASS: Input Form Label*/
+.inputLabel
+
+{
+ color: Black;
+ font-family: Roboto;
+ font-weight: Bold;
+  font-size: 12px;
+}
