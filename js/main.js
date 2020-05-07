@@ -27,29 +27,34 @@ var database = firebase.database();
 
 $('#frmReserve').on('submit', function (e) {
   // prevent the page from reloading
- console.log('submitting form');
+
+ console.log('submitting form to remote Firebase Database');
+
   e.preventDefault();
 
   // grab user's comment from input field
+
   var userName = $('#frmUserName').val();
   var userDay = $('#frmUserDay').val();
 
 
     // clear the user's name from the input field (for UX purposes)
+
   $('#frmUserName').val('');
 
 
   // create a section for reservation data in  db
   var reservationReference = database.ref('reservations');
 
-  // use the set method to save data to the comments
+  // use the set method to save data 
+
   reservationReference.push({
     customerName: userName,
     reservationDay: userDay 
   });
 
 
-// a) Hide the form. show hidden reslts panel to user
+// a) Hide the form. show hidden & display results panel to user
 
   $('#frmPanel').hide();
   $('#resultPanel').show();
@@ -59,7 +64,11 @@ $('#frmReserve').on('submit', function (e) {
 
 $('#addNew').on('click', function (e){
 
+//Prevent from Default Behavior
+
   e.preventDefault();
+
+// a) Hide results panel. Show Form to enter in additional reservation
 
  $('#resultPanel').hide();
   $('#frmPanel').show();
@@ -68,6 +77,8 @@ $('#addNew').on('click', function (e){
 });
 
 
+
+//function: getReservations() Pull previously entered reservations & display them
 
 function getReservations() {
 
@@ -88,15 +99,18 @@ database.ref('reservations').on('value', function (results) {
       var source = $("#rsvp-template").html();
       // Compile our Handlebars template
       var template = Handlebars.compile(source);
-      // Pass the data for this comment (context) into the template
+      // Pass the data for this rsvp (context) into the template
       var rsvpListElement = template(context);
-      // push newly created element to array of comments
+      // push newly created element to array of rsvps
+
      rsvps.push(rsvpListElement)
     }
     alert(rsvpListElement);
     // Update the DOM
     // remove all list items from DOM before appending list items
+
     $('.customerRSVPs').empty()
+
     // append each comment to the list of comments in the DOM
     for (var i in rsvps) {
       $('.customerRSVPs').append(rsvps[i])
@@ -106,16 +120,8 @@ database.ref('reservations').on('value', function (results) {
 }
 
 
-
+//load previously entered reservations on page load
 
 getReservations();
 
-
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.8054491, lng: -73.9654415},
-          zoom: 8
-        });
-      }
 
