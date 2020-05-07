@@ -38,8 +38,13 @@
     <tr>
       <td class="styleFrmReserve">
         <form id="frmReserve" name="frmReserve">
-          <span class="inputLabel">Name:</span>&nbsp;<input type="text"><br><br>
-           <span class="inputLabel">Day:&nbsp;</span><input type="text"><br>
+          <span class="inputLabel">Name:</span>&nbsp;<input id="frmUserName" type="text"><br><br>
+           <span class="inputLabel">Day:&nbsp;</span><select id="frmUserDay">
+           <option value="Today">Today</option>
+           <option value="Tommorrow">Tomorrow</option>
+           <option value="The Day After Tomorrow">The Day After Tomorrow"</option>
+           </select>
+           <br>
           <br>
           <input type="submit">
         </form>
@@ -116,5 +121,15 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1IECGVuRj5G2-_qWR-uNaVRxKq1-5w_A&callback=initMap"
     async defer></script>
+
+<!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+  <!--<script src="js/handlebars-v4.0.5.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Main js file -->
+  <script src="js/main.js"></script>
+
   </body>
 </html>
