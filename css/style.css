@@ -7,6 +7,9 @@ Author: Chad D.Mills
 
 */
 
+ul {
+  list-style-type: none;
+}
 
  #map {
         height: 300px;
@@ -93,4 +96,11 @@ Author: Chad D.Mills
  font-family: Roboto;
  font-weight: Bold;
   font-size: 12px;
+}
+
+#resultPanel
+
+{
+
+display:none;
 }
