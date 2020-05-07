@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>GA - FINAL Project - Reservation App by Chad D. Mills</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <!-- Handlebars Template -->
+  <script id="rsvp-template" type="text/x-handlebars-template">
+    <li data-id="{{rsvpId}}">
+    <span class="reservationName">{{userName}}</span> - 
+     <span class="reservationDay">{{userDay}}</span>
+    </li>
+  </script>
     <table align="center" border="1" width="50%">
   <tr>
     <td align="center">
@@ -37,6 +44,14 @@
   </thead>
     <tr>
       <td class="styleFrmReserve">
+        <div id="resultPanel">
+          <p align="center"><b>Thank you!</b><br><br><br> Your reservation has been submitted
+            <br>
+            <br>
+            [ <a id="addNew" href="#">Add another</a> ]
+          </p><hr>
+        </div>
+        <div id="frmPanel">
         <form id="frmReserve" name="frmReserve">
           <span class="inputLabel">Name:</span>&nbsp;<input id="frmUserName" type="text"><br><br>
            <span class="inputLabel">Day:&nbsp;</span><select id="frmUserDay">
@@ -48,14 +63,16 @@
           <br>
           <input type="submit">
         </form>
+      </div>
         <br>
         <br>
       </td>
       <td></td>
       <td id="frmReserveData" name="frmReserveData" class="styleReserveData" valign="top" align="center">
-        <span class="reservationName">customer name</span> - <span class="reservationDay">reservation day</span><br>
-        <span class="reservationName">customer name</span> - <span class="reservationDay">reservation day</span><br>
-        <span class="reservationName">customer name</span> - <span class="reservationDay">reservation day</span><br>
+        <div id="reservationPanel"></div>
+        <ul class = "customerRSVPs">
+        </ul>
+
         <br>
         <br>
       </td>
@@ -125,7 +142,7 @@
 <!-- Firebase CDN -->
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
-  <!--<script src="js/handlebars-v4.0.5.js"></script>-->
+  <script src="js/handlebars-v4.0.5.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Main js file -->
