@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
     <!-- Handlebars Template -->
@@ -13,6 +15,7 @@
     <li data-id="{{rsvpId}}">
     <span class="reservationName">{{userName}}</span> - 
      <span class="reservationDay">{{userDay}}</span>
+     &nbsp;<i class="glyphicon glyphicon-trash delete"></i>
     </li>
   </script>
     <table align="center" border="1" width="50%">
@@ -29,7 +32,25 @@
       <img src="images/toms-restaurant.jpg" width="100%" alt="Billboard">
     </td>
    </tr>
+    <td align="center">
+        <h1 class="sectionTitle">Business Hours</h1>
+    </td>
+   </tr>
    <tr>
+      <td>
+        <div align="center">
+          <br>
+         <div id="display"></div>
+          <b>Weekly Schedule:</b> 7 days week <b>7am - 9p</b>
+          <hr>
+          Current Weather:<br><br>
+          <div id="weatherForecast" class="weatherData"></div>
+          <br>
+          <span class="poweredBy">powered by the OpenWeather API</span> <i class="glyphicon glyphicon-cloud poweredBy"></i>
+        </div>
+        <br>
+      </td>
+   </tr>
     <td align="center">
         <h1 class="sectionTitle">Reservations</h1>
     </td>
@@ -53,11 +74,11 @@
         </div>
         <div id="frmPanel">
         <form id="frmReserve" name="frmReserve">
-          <span class="inputLabel">Name:</span>&nbsp;<input id="frmUserName" type="text"><br><br>
+          <span class="inputLabel">Name:</span>&nbsp;<input id="frmUserName" type="text" required><br><br>
            <span class="inputLabel">Day:&nbsp;</span><select id="frmUserDay">
            <option value="Today">Today</option>
            <option value="Tommorrow">Tomorrow</option>
-           <option value="The Day After Tomorrow">The Day After Tomorrow"</option>
+           <option value="The Day After Tomorrow">The Day After Tomorrow</option>
            </select>
            <br>
           <br>
@@ -115,12 +136,6 @@
             </span><br>
             <span class="customerName">- Jerry Seinfeld, on The BIG Salad</span>
             <hr>
-            <span class="customerComment">Review</span><br><br>
-            <span class="customerName">Customer Name</span>
-            <hr>
-             <span class="customerComment">Review</span><br><br>
-            <span class="customerName">Customer Name</span>
-            <hr>
           </td>
       </table>
     </td>
@@ -149,6 +164,10 @@
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
   <script src="js/handlebars-v4.0.5.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Main js file -->
   <script src="js/main.js"></script>

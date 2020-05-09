@@ -32,7 +32,7 @@ $('#frmReserve').on('submit', function (e) {
 
   e.preventDefault();
 
-  // grab user's comment from input field
+  // grab user's reservation data from input field
 
   var userName = $('#frmUserName').val();
   var userDay = $('#frmUserDay').val();
@@ -82,7 +82,7 @@ $('#addNew').on('click', function (e){
 
 function getReservations() {
 
-alert('loading reservations...');
+//alert('loading reservations from Firebase DB...');
 
 //$('#reservationPanel').html('Writing reservations');
 
@@ -105,13 +105,15 @@ database.ref('reservations').on('value', function (results) {
 
      rsvps.push(rsvpListElement)
     }
-    alert(rsvpListElement);
+
+    //alert(rsvpListElement);
+
     // Update the DOM
     // remove all list items from DOM before appending list items
 
     $('.customerRSVPs').empty()
 
-    // append each comment to the list of comments in the DOM
+    // append each reservation to the list of reservations in the DOM
     for (var i in rsvps) {
       $('.customerRSVPs').append(rsvps[i])
     }
@@ -119,9 +121,75 @@ database.ref('reservations').on('value', function (results) {
 
 }
 
+var today = new Date(),
+    open = "<font color='green'>We're open today from 7am - 9pm</font>",
+    closed = "<font color='red'>We're closed and will open again tomorrow 7am - 6pm</font>",
+    display = document.getElementById('display');
+
+if (today.getHours() >= 7 && today.getHours() < 20) {
+    display.innerHTML = open;
+} else {
+    display.innerHTML = closed;
+}
+
+
 
 //load previously entered reservations on page load
 
 getReservations();
 
 
+//Deleting Reservations logic
+
+ $('.customerRSVPs').on('click', '.delete', function (e) {
+ // Get the ID for the comment we want to update
+  var id = $(e.target).parent().data('id');
+
+ 	alert('clicked delete id: ' + id);
+
+ 	 // find comment whose objectId is equal to the id we're searching with
+  var rsvpReference = database.ref('reservations/' + id)
+
+
+  // Use remove method to remove the reservation from the database
+  rsvpReference.remove()
+
+
+});
+
+
+//Function getWeatherInfo(): Pulls Houston Weather data from Open Weather API
+var OPEN_WEATHER_MAP_API = "https://api.openweathermap.org/data/2.5/weather?q=Houston&appid=63adcaf64b9cec0202ac5ba456150a9e"
+
+function getWeatherInfo() {
+
+   $.get(OPEN_WEATHER_MAP_API, function(searchResult) {
+       
+       var stringOutput;
+       var celsiusTemp = toCelsius(searchResult.main.temp);
+       
+            
+
+        stringOutput = "<p>"+ searchResult.name + ", Texas<br>"; //adding result city name
+        stringOutput +=  searchResult.main.humidity + "% humidity<br>";
+        stringOutput += celsiusTemp + " C" + "<br>"; //adding result temperature
+       stringOutput +="</p>";
+
+
+$('#weatherForecast').html(stringOutput);
+
+
+       });
+
+}
+
+function toCelsius(kelvinTemp) {
+  var temp = Math.round(kelvinTemp - 273.15);
+  return temp;
+}
+
+
+
+//Call getWeatherInfo() function when page loads
+
+getWeatherInfo();
