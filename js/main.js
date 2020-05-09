@@ -145,7 +145,9 @@ getReservations();
  // Get the ID for the comment we want to update
   var id = $(e.target).parent().data('id');
 
- 	alert('clicked delete id: ' + id);
+ 	//alert('clicked delete id: ' + id);
+ 	alert('You are about to delete your reservation. Click OK to proceed.');
+
 
  	 // find comment whose objectId is equal to the id we're searching with
   var rsvpReference = database.ref('reservations/' + id)
